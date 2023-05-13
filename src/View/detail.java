@@ -9,15 +9,15 @@ import java.util.Date;
 public class detail extends JFrame implements ActionListener {
 	JLabel title ,name, nameJob, content, contentJob, emailLb, email, salaryLb, salary, line;  
 	JPanel footer, container, TPanel, NameP, NJP, contentP, cjP;
-	public void UI() {
+	public void UI(String[] data) {
 		title = new JLabel("<html><p style=\"font-size: 20px\">Chi tiết công việc</p></html>");
 		name = new JLabel("<html><u style=\"color: red;\"><b>Tên công việc</b></u></html>");
-		nameJob = new JLabel("hack ưebsite");
+		nameJob = new JLabel(data[0]);
 		content = new JLabel("<html><u style=\"color: red;\"><b>Chi tiết</b></u></html>");
 		contentJob = new JLabel(" Chủ Nhật ngày 14/5/2023 các bạn sẽ làm bài Test Thực Hành Java vào lúc 7h30 tại C202-C204-C205. Các bạn câcscascascSang Chủ Nhật ngày 14/5/2023 các bạn sẽ làm bài Test Thực Hành Java vào lúc 7h30 tại C202-C204-C205. Các bạn   Chủ Nhật ngày 14/5/2023 các bạn sẽ làm bài Test Thực Hành Java vào lúc 7h30 tại C202-C204-C205. Các bạn   Chủ Nhật ngày 14/5/2023 các bạn sẽ làm bài Test Thực Hành Java vào lúc 7h30 tại C202-C204-C205. Các bạn chuẩn bị máy tính và môi trường đầy đủ để làm bài.");
-		contentJob.setText("<html><p style=\"width:400px\">Chủ Nhật ngày 14/5/2023 các bạn sẽ làm bài Test Thực Hành Java vào lúc 7h30 tại C202-C204-C205. Các bạn câcscascascSang Chủ Nhật ngày 14/5/2023 các bạn sẽ làm bài Test Thực Hành Java vào lúc 7h30 tại C202-C204-C205. Các bạn   Chủ Nhật ngày 14/5/2023 các bạn sẽ làm bài Test Thực Hành Java vào lúc 7h30 tại C202-C204-C205. Các bạn   Chủ Nhật ngày 14/5/2023 các bạn sẽ làm bài Test Thực Hành Java vào lúc 7h30 tại C202-C204-C205. Các bạn chuẩn bị máy tính và mô</p></html>");
+		contentJob.setText("<html><p style=\"width:400px\">"+ data[5]+"</p></html>");
 		salaryLb = new JLabel("Lương : ");
-		salary = new JLabel("900000");
+		salary = new JLabel(data[3]);
 		
 		line = new JLabel(" | ");
 		
@@ -59,8 +59,8 @@ public class detail extends JFrame implements ActionListener {
 		show();
 	}
 	public void actionPerformed(ActionEvent e) {}
-	public detail() {
+	public detail(String[] data) {
 		super();
-		UI();
+		UI( data);
 	}
 }
