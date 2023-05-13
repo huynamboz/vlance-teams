@@ -1,7 +1,7 @@
 package DTO;
 
 public class user {
-	private String id;
+	private int id;
 	private String name;
 	private int age;
 	private String address;
@@ -13,7 +13,7 @@ public class user {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public void setID(String id) {
+	public void setID(int id) {
 		this.id = id;
 	}
 	public void setName(String name) {
@@ -25,7 +25,7 @@ public class user {
 	public void setAddress(String addr) {
 		this.address = addr;
 	}
-	public void setUserData(String id, String name, int age, String addr) {
+	public void setUserData(int id, String name, int age, String addr) {
 		this.id = id;
 		this.name = name;
 		this.age = age;

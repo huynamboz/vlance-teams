@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 import DAL.DAL;
-
+import View.home;
 public class Login extends JFrame implements ActionListener{
 	JPanel container, pn1,pn2,pn2_1, pn2_2, pn3;
 	JButton btnLogin, btnRegister;
@@ -64,6 +64,8 @@ public class Login extends JFrame implements ActionListener{
 			try {
 				if (dal.login(txtUsername.getText(), txtPassword.getText())) {
 					System.out.println("ok");
+					new home();
+					this.setVisible(false);
 				} else {
 					System.out.println("no");
 				}

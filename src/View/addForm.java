@@ -89,12 +89,9 @@ public class addForm extends JFrame implements ActionListener
 
 	public void actionPerformed(ActionEvent e) 
 	{
-		if(e.getSource() == btCancel) {
-			dispose();
-			System.exit(0);
-		}
+		
 
-		else if(e.getSource() == btSubmit) 
+		 if(e.getSource() == btSubmit) 
 		{
 			String q1 = txt1.getText();
 			String q2 = txt2.getText();
@@ -102,8 +99,11 @@ public class addForm extends JFrame implements ActionListener
 			String q4 = txt4.getText();
 			String q5 = txt5.getText();
 			String q6 = txt6.getText();
-			
-			bll.excuteDB(q1,q2,q3,q4,q5,q6);
+			String[] para = {q1,q2,q3,q4,q5,q6};
+			dal.addjob(
+					"INSERT INTO jobs (Title, Name, NameJob, Salary, Address, Content) VALUES (?,?,?,?,?,?)",
+					para
+					);
 		}
 	}
 	

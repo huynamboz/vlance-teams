@@ -7,6 +7,6 @@ import View.addForm;
 public class app {
 	public static void main(String[] args)
     {
-        addForm addForm = new addForm();
+		Login login = new Login();
     }
 }

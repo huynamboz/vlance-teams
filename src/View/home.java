@@ -1,5 +1,6 @@
 package View;
 import java.util.Date;
+import DAL.DBHelper;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -14,17 +15,20 @@ public class home extends JFrame implements ActionListener,ItemListener {
 	JComboBox cb;
 	JTable table;
 	JScrollPane scrollPane;
+	JButton add;
 	public void GUI() {
 		title = new JLabel("Ứng dụng tìm việc làm");
 		header = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		header.add(title);
-		
+		add = new JButton("Add job");
+		add.addActionListener(this);
 		
 		lb1 = new JLabel("Tìm kiếm :");
 		inp = new JTextField(20);
 		searchPn = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		searchPn.add(lb1);
 		searchPn.add(inp);
+		searchPn.add(add);
 		
 		
 		lb2 = new JLabel("Ngành :");
@@ -36,6 +40,34 @@ public class home extends JFrame implements ActionListener,ItemListener {
 		
 		container = new JPanel();
 		table = new JTable();
+		
+		
+		table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = table.rowAtPoint(e.getPoint()); // Xác định hàng được chọn
+                
+                int columnCount = table.getColumnCount();
+                
+                String[] data = new String[columnCount];
+                
+                for (int column = 0; column < columnCount; column++) {
+                 
+                    Object value = table.getValueAt(row, column);
+                    
+                    // Chuyển đổi giá trị sang kiểu String và lưu vào mảng data
+                    data[column] = String.valueOf(value);
+                }
+                new detail(data);
+                // Sử dụng mảng data theo nhu cầu của bạn
+                // Ví dụ: in giá trị lên console
+                for (String value : data) {
+                    System.out.println("Value: " + value);
+                }
+            }
+        });
+		
+		
 		scrollPane = new JScrollPane(table);
 		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 		container.add(header);
@@ -45,15 +77,24 @@ public class home extends JFrame implements ActionListener,ItemListener {
 		add(container);
 		setSize(500,500);
 		show();
+		DefaultTableModel model = new DefaultTableModel();
+		//add new column name
+		for (String columnName : DBHelper.Instance().getDataCols()) {
+		    model.addColumn(columnName);
+		}
+		for( String[] row : DBHelper.Instance().getDataRows()) {
+			model.addRow(row);
+		}
+		table.setModel(model);
 	}
-	public void actionPerformed(ActionEvent e) {}
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == add) {
+			new addForm();
+		}
+	}
 	 public void itemStateChanged( ItemEvent e) {}
 	public home() {
 		super();
 		GUI();
-	}
-	public static void main(String [] agr) {
-		new home();
-		new detail();
 	}
 }
