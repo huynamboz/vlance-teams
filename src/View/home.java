@@ -52,8 +52,4 @@ public class home extends JFrame implements ActionListener,ItemListener {
 		super();
 		GUI();
 	}
-	public static void main(String [] agr) {
-		new home();
-		new detail();
-	}
 }

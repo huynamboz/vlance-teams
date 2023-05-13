@@ -3,7 +3,7 @@ package DAL;
 import java.sql.*;
 public class DAL {
 	public Boolean login(String email, String password) throws SQLException {
-		String[] params = { password };
+		String[] params = { email };
 		ResultSet rs  = DBHelper.Instance().execute("select * from users where users.email = ?", params);
 		System.out.println(123);
 		if (!rs.next()) {

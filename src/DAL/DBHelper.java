@@ -5,7 +5,7 @@ public class DBHelper {
 	private DBHelper(String s) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			_cnn = DriverManager.getConnection(s,"root","");
+			_cnn = DriverManager.getConnection(s,"root","Huynam@2003");
 		} catch (Exception e) {
 			System.out.print("Error init connection :" + e);
 		}
